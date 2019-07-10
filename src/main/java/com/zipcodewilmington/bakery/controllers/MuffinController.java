@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("muffins")
 public class MuffinController {
 
     private MuffinService service;
@@ -34,13 +35,13 @@ public class MuffinController {
         return new ResponseEntity<>(service.create(baker), HttpStatus.CREATED);
     }
 
-    @PutMapping("/muffins/update")
+    @PutMapping("/muffins")
     public ResponseEntity<Muffin> update(@RequestBody Long id, Muffin baker) {
         return new ResponseEntity<>(service.update(id, baker), HttpStatus.OK);
     }
 
-    @DeleteMapping("/muffins/delete")
-    public ResponseEntity<Boolean> destroy(Long id) {
+    @DeleteMapping("/muffins")
+    public ResponseEntity<Boolean> destroy(@RequestBody Long id) {
         return new ResponseEntity<>(service.delete(id), HttpStatus.OK);
     }
 }

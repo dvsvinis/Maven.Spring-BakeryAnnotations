@@ -20,7 +20,8 @@ public class BakerController {
 
     @GetMapping(value = "/bakers")
     public ResponseEntity<Iterable<Baker>> index() {
-        return new ResponseEntity<>(service.index(), HttpStatus.OK);
+        Iterable<Baker> result = service.index();
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @GetMapping("/bakers/{id}")
